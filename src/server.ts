@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
+import { Request, Response } from 'express';
+
 
 (async () => {
 
@@ -31,7 +33,8 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   //! END @TODO1
 
-  app.get("/filteredimage", async (req, res ) => {
+  app.get("/filteredimage", async (req: Request , res: Response ) => {
+
     console.log('processing restful endpoint: /filteredimage');
     let { image_url } = req.query;
     console.log('get image_url value from request parameter: ' + image_url);
