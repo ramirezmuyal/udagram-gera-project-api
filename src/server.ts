@@ -30,12 +30,18 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   /**************************************************************************** */
 
   //! END @TODO1
-  
+
   app.get("/filteredimage", async (req, res ) => {
     console.log('processing restful endpoint: /filteredimage');
     let { image_url } = req.query;
     console.log('get image_url value from request parameter: ' + image_url);
     
+    if (!image_url) {
+      console.log('image_url was not provided in request parameter!');
+      return res.status(400).send({ error: 'A valid Image URL paramter [image_url] is required' });
+    } else {
+      console.log('image_url was provided to process:  ' + image_url);
+    }
 
   });
   
