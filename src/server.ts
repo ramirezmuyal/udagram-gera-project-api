@@ -41,8 +41,14 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       return res.status(400).send({ error: 'A valid Image URL paramter [image_url] is required' });
     } else {
       console.log('image_url was provided to process:  ' + image_url);
+      let filteredpath = await filterImageFromURL(image_url);       
+      res.sendFile(filteredpath, () => {
+      console.log('time to clean up ... deleting image file.')
+      deleteLocalFiles([filteredpath]);
+      console.log('successfully deleted the image file');
+    });
+    res.status(200);
     }
-
   });
   
   // Root Endpoint
