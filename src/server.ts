@@ -31,6 +31,14 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   //! END @TODO1
   
+  app.get("/filteredimage", async (req, res ) => {
+    console.log('processing restful endpoint: /filteredimage');
+    let { image_url } = req.query;
+    console.log('get image_url value from request parameter: ' + image_url);
+    
+
+  });
+  
   // Root Endpoint
   // Displays a simple message to the user
   app.get( "/", async ( req, res ) => {
